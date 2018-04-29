@@ -13,17 +13,25 @@ import org.seckill.seckillStatEnum.seckillStatEnum;
 import org.seckill.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 import java.util.List;
 
+
+@Service
 public class SeckillServiceImpl implements SeckillService{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+//    注入service依赖
+    @Autowired
     private SeckillDao seckillDao;
+    @Autowired
     private Success_KilledDao success_killedDao;
     //用于 混淆md5
-    private final String slat="越复杂越好";
+    private final String slat="yuefuzhayuehao";
 
     public List<Seckill> getSeckillList() {
         return seckillDao.queryAll(0,4);
@@ -54,7 +62,17 @@ public class SeckillServiceImpl implements SeckillService{
         String md5 = DigestUtils.md5DigestAsHex(base.getBytes());
         return md5;
     }
+/*
+    使用注解控制事务优点
+    1.开发团队达成一致约定 明确标注事务方法的 编程风格
+    2.保证事务方法的执行时间尽可能短 不要穿插其他网络操作 RPC/HTTP请求 或者 还是需要 剥离到事务操作外
+    做一个上级操作 把需求 封装到上级操作中
+    如果没有抛掷异常则 会 commit
+    若果 抛掷 运行期异常则会 rollback
+    3.不是所有方法都需要事务 只有一条修改操作 或者 只读  不需要事务控制
 
+  */
+    @Transactional
     public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, RepeatKillException {
         if(md5==null || !md5.equals(getMD5(seckillId))){
             throw new SeckillException("seckill rewrite");
