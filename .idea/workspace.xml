@@ -7,25 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="125fc16a-d854-4de1-8e40-14850fa9aaac" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_dyuproject_protostuff_protostuff_api_1_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_dyuproject_protostuff_protostuff_collectionschema_1_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_dyuproject_protostuff_protostuff_core_1_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_dyuproject_protostuff_protostuff_runtime_1_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_3.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_7_3.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/seckill/dao/cache/RedisDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/seckill/dao/cache/RedisDaoTest.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/seckill_war_exploded/WEB-INF/classes/org/seckill/entity/Seckill.class" afterPath="$PROJECT_DIR$/out/artifacts/seckill_war_exploded/WEB-INF/classes/org/seckill/entity/Seckill.class" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/seckill_war_exploded/WEB-INF/classes/org/seckill/service/impl/SeckillServiceImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/seckill_war_exploded/WEB-INF/classes/org/seckill/service/impl/SeckillServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/seckill_war_exploded/resource/script/seckill.js" afterPath="$PROJECT_DIR$/out/artifacts/seckill_war_exploded/resource/script/seckill.js" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/seckill.iml" afterPath="$PROJECT_DIR$/seckill.iml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/seckill/entity/Seckill.java" afterPath="$PROJECT_DIR$/src/main/java/org/seckill/entity/Seckill.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/seckill/service/impl/SeckillServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/org/seckill/service/impl/SeckillServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/seckill/entity/Seckill.class" afterPath="$PROJECT_DIR$/target/classes/org/seckill/entity/Seckill.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/seckill/service/impl/SeckillServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/org/seckill/service/impl/SeckillServiceImpl.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/seckill/service/impl/SeckillServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="109" column="23" lean-forward="false" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
+              <caret line="109" column="25" lean-forward="false" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -837,7 +819,7 @@
       <workItem from="1524974174585" duration="10342000" />
       <workItem from="1525069546463" duration="11867000" />
       <workItem from="1525092452074" duration="1731000" />
-      <workItem from="1525151718732" duration="10478000" />
+      <workItem from="1525151718732" duration="10558000" />
     </task>
     <servers />
   </component>
@@ -874,7 +856,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61583000" />
+    <option name="totallyTimeSpent" value="61663000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="41" width="1440" height="800" extended-state="0" />
@@ -1422,7 +1404,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/seckill/service/impl/SeckillServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="109" column="23" lean-forward="false" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
+          <caret line="109" column="25" lean-forward="false" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -107,7 +107,7 @@ public class SeckillServiceImpl implements SeckillService{
 //                冲突 重复秒杀
                throw new RepeatKillException("seckill repeated");
            }else{
-               //热点商品竞争
+               //热点商品竞争gi
                int update = seckillDao.reduceNumber(seckillId,now);
                if(update<=0){
                    throw new SeckillCloseException("seckill is closed");
