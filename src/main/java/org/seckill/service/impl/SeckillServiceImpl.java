@@ -2,6 +2,7 @@ package org.seckill.service.impl;
 
 import org.seckill.dao.SeckillDao;
 import org.seckill.dao.Success_KilledDao;
+import org.seckill.dao.cache.RedisDao;
 import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExecution;
 import org.seckill.entity.Seckill;
@@ -28,6 +29,10 @@ public class SeckillServiceImpl implements SeckillService{
 //    注入service依赖
     @Autowired
     private SeckillDao seckillDao;
+
+    @Autowired
+    private  RedisDao redisDao;
+
     @Autowired
     private Success_KilledDao success_killedDao;
     //用于 混淆md5
@@ -42,10 +47,26 @@ public class SeckillServiceImpl implements SeckillService{
     }
 
     public Exposer exportSeckillUrl(long seckillId) {
-        Seckill seckill = seckillDao.queryById(seckillId);
+//        redis优化 缓存优化
+        /*
+
+        get from cache
+            if null
+                get db
+                put catch
+
+
+         */
+
+        Seckill seckill = redisDao.getSeckill(seckillId);
         if(seckill==null){
-            return new Exposer(false,seckillId);
+            seckill = seckillDao.queryById(seckillId);
+            if(seckill==null){
+                return new Exposer(false,seckillId);
+            }
+            redisDao.putSeckill(seckill);
         }
+
         Date start_time = seckill.getStartTime();
         Date end_time = seckill.getEndTime();
         Date now = new Date();
@@ -78,21 +99,26 @@ public class SeckillServiceImpl implements SeckillService{
             throw new SeckillException("seckill rewrite");
         }
         Date now = new Date();
+        //改变 操作顺序 较少行级锁 占用时间
        try{
-           int update = seckillDao.reduceNumber(seckillId,now);
-           if(update<=0){
-               throw new SeckillCloseException("seckill is closed");
-           }else{
-               //减库存成功
 
-               int insert  = success_killedDao.insertSuccess_killed(seckillId,userPhone);
-               if(insert<=0){
+           int insert  = success_killedDao.insertSuccess_killed(seckillId,userPhone);
+           if(insert<=0){
 //                冲突 重复秒杀
-                   throw new RepeatKillException("seckill repeated");
+               throw new RepeatKillException("seckill repeated");
+           }else{
+               //热点商品竞争
+               int update = seckillDao.reduceNumber(seckillId,now);
+               if(update<=0){
+                   throw new SeckillCloseException("seckill is closed");
+               }else {
+                   //减库存成功
+                   SuccessKilled successKilled = success_killedDao.queryByIdWithSeckill(seckillId, userPhone);
+                   return new SeckillExecution(seckillId, seckillStatEnum.SUCCESS, successKilled);
                }
-               SuccessKilled successKilled = success_killedDao.queryByIdWithSeckill(seckillId,userPhone);
-               return new SeckillExecution(seckillId, seckillStatEnum.SUCCESS,successKilled);
            }
+
+
        }catch(SeckillCloseException e1){
            throw e1;
 

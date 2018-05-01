@@ -50,18 +50,17 @@ var seckill = {
                                 var killResult = result['data'];
                                 var state = killResult['state'];
                                 var stateInfo = killResult['stateInfo'];
-                                alert(stateInfo);
                                 // 显示秒杀结果
                                 node.html('<span class="label label-success">'+stateInfo+'</span>')
                             }else{
                                 var killResult = result['data'];
                                 var state = killResult['state'];
                                 var stateInfo = killResult['stateInfo'];
-                                alert(stateInfo);
                                 // 显示秒杀结果
                                 node.html('<span class="label label-success">'+stateInfo+'</span>')                            }
                         });
                     });
+                    console.log(reuslt);
                     node.show();
                 }else{
                     //如果 用户开始计时面板很长 时间跳转有差异 pc机计时过快

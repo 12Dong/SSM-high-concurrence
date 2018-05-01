@@ -1,5 +1,6 @@
 package org.seckill.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 public class Seckill {
