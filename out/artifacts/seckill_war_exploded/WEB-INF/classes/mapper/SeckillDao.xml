@@ -14,9 +14,9 @@
     </update>
 
     <select id="queryById" resultType="Seckill" parameterType="long">
-      select *
+      select  *
       from seckill
-      where seckill_id = #{seckillId}
+      where seckill_id = #{seckill_id}
     </select>
 
 
